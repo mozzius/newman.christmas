@@ -1,12 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-
-import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -31,11 +27,16 @@ const Home: NextPage = () => {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-            newman.<span className="text-[hsl(280,100%,70%)]">christmas</span>
+      <main className="flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+            newman.<span className="text-green-700">christmas</span>
           </h1>
+          <img
+            src="https://i.tincy.pics/clb2g794300002e662q89fnhi"
+            alt="buddy the elf"
+            className="w-128 h-auto max-w-full"
+          />
         </div>
       </main>
     </>
