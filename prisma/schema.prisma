@@ -10,8 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id        String   @id @default(cuid())
+model Global {
+  id     String @id @default("global")
+  game   Game   @relation(fields: [gameId], references: [id])
+  gameId Int
+}
+
+enum Status {
+  WAITING
+  PLAYING
+  FINISHED
+}
+
+model Game {
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status    Status   @default(WAITING)
+  players   Player[]
+  global    Global[]
+}
+
+model Player {
+  id        Int      @id @default(autoincrement())
+  name      String
+  character String
+  guesser   Player?  @relation("guesser", fields: [guesserId], references: [id])
+  guesserId Int?
+  subjects  Player[] @relation("guesser")
+  game      Game     @relation(fields: [gameId], references: [id])
+  gameId    Int
 }

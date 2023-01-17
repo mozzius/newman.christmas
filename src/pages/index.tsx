@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+import { Button } from "@/components/button";
 import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -37,6 +39,12 @@ const Home: NextPage = () => {
             alt="buddy the elf"
             className="w-128 h-auto max-w-full"
           />
+          <a href="https://52books.newman.christmas">
+            <Button>52books</Button>
+          </a>
+          {/* <Link href="/empires">
+            <Button>Play Empires</Button>
+          </Link> */}
         </div>
       </main>
     </>
